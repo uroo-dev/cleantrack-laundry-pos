@@ -69,7 +69,13 @@
 
 ## 🖥️ Screenshots
 
-> *Coming soon*
+<div align="center">
+  <img src="public/screenshots/satu.png" alt="Screenshot 1" width="800" style="border-radius: 12px; box-shadow: 0 20px 40px -15px rgba(0,74,198,0.15); margin-bottom: 16px;">
+  <br>
+  <img src="public/screenshots/dua.png" alt="Screenshot 2" width="800" style="border-radius: 12px; box-shadow: 0 20px 40px -15px rgba(0,74,198,0.15); margin-bottom: 16px;">
+  <br>
+  <img src="public/screenshots/tiga.png" alt="Screenshot 3" width="800" style="border-radius: 12px; box-shadow: 0 20px 40px -15px rgba(0,74,198,0.15); margin-bottom: 16px;">
+</div>
 
 | Page | Description |
 |------|-------------|
