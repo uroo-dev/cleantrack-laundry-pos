@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LaundryHub Admin - Daftar Invoice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f9fb;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .soft-shadow {
+            box-shadow: 0 20px 40px -15px rgba(0, 74, 198, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c3c6d7;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary-fixed": "#acedff",
+                        "secondary-container": "#57dffe",
+                        "error-container": "#ffdad6",
+                        "surface": "#f7f9fb",
+                        "surface-container-high": "#e6e8ea",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#bdffdb",
+                        "on-secondary-fixed": "#001f26",
+                        "on-primary-fixed": "#00174b",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-dim": "#d8dadc",
+                        "tertiary": "#006242",
+                        "outline": "#737686",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-container": "#007d55",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-surface-variant": "#434655",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "outline-variant": "#c3c6d7",
+                        "primary-fixed": "#dbe1ff",
+                        "on-surface": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#00687a",
+                        "background": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "surface-tint": "#0053db",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed": "#002113",
+                        "primary": "#004ac6",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-container": "#2563eb",
+                        "on-primary-container": "#eeefff",
+                        "surface-container": "#eceef0",
+                        "on-secondary-container": "#006172",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "margin-mobile": "16px",
+                        "lg": "40px",
+                        "xs": "4px",
+                        "xl": "64px",
+                        "margin-desktop": "48px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500"}],
+                        "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1px", "fontWeight": "600"}],
+                        "headline-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/30 shadow-sm flex flex-col p-gutter z-50">
+<div class="mb-lg">
+<div class="flex items-center gap-3 mb-base">
+<span class="text-headline-sm font-headline-lg text-primary tracking-tight">LaundryHub</span>
+</div>
+<p class="text-label-sm text-on-surface-variant px-1">Admin Portal</p>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Dashboard (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-lg font-label-lg">Dashboard</span>
+</a>
+<!-- Transactions (Active - Hierarchy 1: Exact Match) -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold transition-all scale-[0.98]" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-lg font-label-lg">Transactions</span>
+</a>
+<!-- Customers (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-label-lg font-label-lg">Customers</span>
+</a>
+<!-- Staff Progress (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">local_laundry_service</span>
+<span class="text-label-lg font-label-lg">Staff Progress</span>
+</a>
+<!-- Settings (Inactive) -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-lg font-label-lg">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2">
+<button class="w-full py-3 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-2 mb-4 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+                New Order
+            </button>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-label-lg font-label-lg">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-label-lg font-label-lg">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar (Authority: JSON) -->
+<header class="fixed top-0 right-0 w-[calc(100%-256px)] h-20 bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 flex justify-between items-center px-margin-desktop z-40">
+<div class="flex items-center gap-gutter w-full max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-4 py-2.5 bg-surface-container-low border border-outline-variant/50 rounded-full text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Cari nomor invoice atau nama pelanggan..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hover:bg-surface-container-high rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="hover:bg-surface-container-high rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">chat</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-fixed ml-2">
+<img class="h-full w-full object-cover" data-alt="A professional headshot of a young male manager in a clean white polo shirt, smiling confidently. He is in a brightly lit, modern office with soft blue accents, embodying a fresh and trustworthy business professional style. High-quality digital photography with soft bokeh background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDOv0zJJeh8ahpbdHh7V-1yz71_6iayYSGdfMA4OKlWMIc4nBSxzhdYkOmdVzXfPizH6dOwxrq0JyK211J0D3gJPSBcRcDo_xQAauZLLn8YvG6I3Ze8pCiADXEVZFiZjUilKUk_jgTWxwjVH0d4oL_hqGILxpt3GTKBUi5kDt5cFG4XeJxLVihkfwxc3bpfRgH-R0JXrqGBk-3iCLlv5o0i3vP9JKNKrTsibnwkHZdXYYzaUiZVg-kDw4JdoZOB2nlagZDxIUBbpk"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-20 p-margin-desktop min-h-screen">
+<!-- Page Header & Stats Bento -->
+<section class="mb-lg">
+<div class="flex justify-between items-end mb-md">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface mb-xs">Semua Invoice</h1>
+<p class="text-body-md text-on-surface-variant">Kelola dan pantau seluruh riwayat transaksi laundry Anda.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-primary text-on-primary rounded-lg font-bold shadow-sm hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined">download</span>
+                    Ekspor Data
+                </button>
+</div>
+<!-- Bento Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="glass-card soft-shadow p-md rounded-xl flex items-center gap-md">
+<div class="h-14 w-14 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">description</span>
+</div>
+<div>
+<p class="text-label-lg text-on-surface-variant">Total Invoices</p>
+<h2 class="text-headline-sm font-headline-sm">1,284 <span class="text-label-sm text-tertiary font-normal ml-1">+12%</span></h2>
+</div>
+</div>
+<div class="glass-card soft-shadow p-md rounded-xl flex items-center gap-md">
+<div class="h-14 w-14 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-3xl">pending_actions</span>
+</div>
+<div>
+<p class="text-label-lg text-on-surface-variant">Total Belum Lunas</p>
+<h2 class="text-headline-sm font-headline-sm">42 <span class="text-label-sm text-on-surface-variant font-normal ml-1">Invoice</span></h2>
+</div>
+</div>
+<div class="glass-card soft-shadow p-md rounded-xl flex items-center gap-md">
+<div class="h-14 w-14 rounded-full bg-tertiary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl">payments</span>
+</div>
+<div>
+<p class="text-label-lg text-on-surface-variant">Total Pendapatan</p>
+<h2 class="text-headline-sm font-headline-sm">Rp 45.280.000</h2>
+</div>
+</div>
+</div>
+</section>
+<!-- Filters & Table Section -->
+<section class="glass-card soft-shadow rounded-xl overflow-hidden mb-lg">
+<!-- Filter Bar -->
+<div class="p-md border-b border-outline-variant/20 flex flex-wrap gap-md items-center justify-between">
+<div class="flex flex-wrap gap-sm">
+<div class="relative min-w-[200px]">
+<label class="text-label-sm text-on-surface-variant absolute -top-2 left-3 bg-white px-1">Rentang Tanggal</label>
+<select class="w-full px-4 py-2 bg-transparent border border-outline-variant/50 rounded-lg text-body-sm focus:border-primary outline-none appearance-none">
+<option>Semua Waktu</option>
+<option>Hari Ini</option>
+<option>7 Hari Terakhir</option>
+<option>Bulan Ini</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">calendar_month</span>
+</div>
+<div class="relative min-w-[160px]">
+<label class="text-label-sm text-on-surface-variant absolute -top-2 left-3 bg-white px-1">Status</label>
+<select class="w-full px-4 py-2 bg-transparent border border-outline-variant/50 rounded-lg text-body-sm focus:border-primary outline-none">
+<option>Semua Status</option>
+<option>Lunas</option>
+<option>Belum Lunas</option>
+<option>Dibatalkan</option>
+</select>
+</div>
+<div class="relative min-w-[180px]">
+<label class="text-label-sm text-on-surface-variant absolute -top-2 left-3 bg-white px-1">Layanan</label>
+<select class="w-full px-4 py-2 bg-transparent border border-outline-variant/50 rounded-lg text-body-sm focus:border-primary outline-none">
+<option>Semua Layanan</option>
+<option>Cuci Lipat</option>
+<option>Hanya Setrika</option>
+<option>Dry Clean</option>
+</select>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-body-sm text-on-surface-variant">Menampilkan 1-10 dari 1,284</span>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-outline-variant/30">
+<th class="px-md py-4 text-label-lg font-label-lg">Invoice ID</th>
+<th class="px-md py-4 text-label-lg font-label-lg">Tanggal</th>
+<th class="px-md py-4 text-label-lg font-label-lg">Nama Pelanggan</th>
+<th class="px-md py-4 text-label-lg font-label-lg">Layanan</th>
+<th class="px-md py-4 text-label-lg font-label-lg">Total Tagihan</th>
+<th class="px-md py-4 text-label-lg font-label-lg">Status Pembayaran</th>
+<th class="px-md py-4 text-label-lg font-label-lg text-center">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-5 font-bold text-primary">#INV-20231024-001</td>
+<td class="px-md py-5 text-body-sm">24 Okt 2023</td>
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center text-[10px] font-bold">AS</div>
+<span class="text-body-md font-medium">Andi Saputra</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[12px] font-medium">Cuci Lipat</span>
+</td>
+<td class="px-md py-5 font-semibold">Rp 45.000</td>
+<td class="px-md py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-tertiary-fixed/30 text-tertiary-container rounded-full text-[12px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                    Lunas
+                                </span>
+</td>
+<td class="px-md py-5">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 hover:bg-primary-fixed/30 text-primary rounded-lg transition-colors" title="Lihat Detail">
+<span class="material-symbols-outlined text-body-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-lg transition-colors" title="Cetak">
+<span class="material-symbols-outlined text-body-lg">print</span>
+</button>
+<button class="p-2 hover:bg-tertiary-fixed/30 text-tertiary rounded-lg transition-colors" title="Kirim WA">
+<span class="material-symbols-outlined text-body-lg">chat</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-5 font-bold text-primary">#INV-20231024-002</td>
+<td class="px-md py-5 text-body-sm">24 Okt 2023</td>
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center text-[10px] font-bold">BR</div>
+<span class="text-body-md font-medium">Budi Raharjo</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[12px] font-medium">Hanya Setrika</span>
+</td>
+<td class="px-md py-5 font-semibold">Rp 25.000</td>
+<td class="px-md py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[12px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-secondary-container"></span>
+                                    Belum Lunas
+                                </span>
+</td>
+<td class="px-md py-5">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 hover:bg-primary-fixed/30 text-primary rounded-lg transition-colors" title="Lihat Detail">
+<span class="material-symbols-outlined text-body-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-lg transition-colors" title="Cetak">
+<span class="material-symbols-outlined text-body-lg">print</span>
+</button>
+<button class="p-2 hover:bg-tertiary-fixed/30 text-tertiary rounded-lg transition-colors" title="Kirim WA">
+<span class="material-symbols-outlined text-body-lg">chat</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-5 font-bold text-primary">#INV-20231024-003</td>
+<td class="px-md py-5 text-body-sm">23 Okt 2023</td>
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center text-[10px] font-bold">CW</div>
+<span class="text-body-md font-medium">Citra Wijaya</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[12px] font-medium">Dry Clean</span>
+</td>
+<td class="px-md py-5 font-semibold">Rp 120.000</td>
+<td class="px-md py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-tertiary-fixed/30 text-tertiary-container rounded-full text-[12px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                    Lunas
+                                </span>
+</td>
+<td class="px-md py-5">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 hover:bg-primary-fixed/30 text-primary rounded-lg transition-colors" title="Lihat Detail">
+<span class="material-symbols-outlined text-body-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-lg transition-colors" title="Cetak">
+<span class="material-symbols-outlined text-body-lg">print</span>
+</button>
+<button class="p-2 hover:bg-tertiary-fixed/30 text-tertiary rounded-lg transition-colors" title="Kirim WA">
+<span class="material-symbols-outlined text-body-lg">chat</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-5 font-bold text-primary">#INV-20231024-004</td>
+<td class="px-md py-5 text-body-sm">23 Okt 2023</td>
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center text-[10px] font-bold">DP</div>
+<span class="text-body-md font-medium">Dewi Putri</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[12px] font-medium">Cuci Lipat</span>
+</td>
+<td class="px-md py-5 font-semibold">Rp 38.500</td>
+<td class="px-md py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-tertiary-fixed/30 text-tertiary-container rounded-full text-[12px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                    Lunas
+                                </span>
+</td>
+<td class="px-md py-5">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 hover:bg-primary-fixed/30 text-primary rounded-lg transition-colors" title="Lihat Detail">
+<span class="material-symbols-outlined text-body-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-lg transition-colors" title="Cetak">
+<span class="material-symbols-outlined text-body-lg">print</span>
+</button>
+<button class="p-2 hover:bg-tertiary-fixed/30 text-tertiary rounded-lg transition-colors" title="Kirim WA">
+<span class="material-symbols-outlined text-body-lg">chat</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-md py-5 font-bold text-primary">#INV-20231024-005</td>
+<td class="px-md py-5 text-body-sm">22 Okt 2023</td>
+<td class="px-md py-5">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface flex items-center justify-center text-[10px] font-bold">EP</div>
+<span class="text-body-md font-medium">Eko Prasetyo</span>
+</div>
+</td>
+<td class="px-md py-5">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[12px] font-medium">Cuci Lipat</span>
+</td>
+<td class="px-md py-5 font-semibold">Rp 52.000</td>
+<td class="px-md py-5">
+<span class="inline-flex items-center gap-1 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[12px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-secondary-container"></span>
+                                    Belum Lunas
+                                </span>
+</td>
+<td class="px-md py-5">
+<div class="flex items-center justify-center gap-2">
+<button class="p-2 hover:bg-primary-fixed/30 text-primary rounded-lg transition-colors" title="Lihat Detail">
+<span class="material-symbols-outlined text-body-lg">visibility</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high text-on-surface-variant rounded-lg transition-colors" title="Cetak">
+<span class="material-symbols-outlined text-body-lg">print</span>
+</button>
+<button class="p-2 hover:bg-tertiary-fixed/30 text-tertiary rounded-lg transition-colors" title="Kirim WA">
+<span class="material-symbols-outlined text-body-lg">chat</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-md bg-surface-container-low/50 border-t border-outline-variant/20 flex items-center justify-between">
+<button class="flex items-center gap-2 px-4 py-2 text-on-surface-variant hover:text-primary transition-colors font-medium">
+<span class="material-symbols-outlined">chevron_left</span>
+                    Sebelumnya
+                </button>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold shadow-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant">3</button>
+<span class="text-on-surface-variant px-2">...</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface-container-high transition-colors text-on-surface-variant">128</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-on-surface-variant hover:text-primary transition-colors font-medium">
+                    Selanjutnya
+                    <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Micro-interaction Scripts -->
+<script>
+        document.querySelectorAll('button, a').forEach(elem => {
+            elem.addEventListener('mousedown', () => {
+                elem.style.transform = 'scale(0.97)';
+            });
+            elem.addEventListener('mouseup', () => {
+                elem.style.transform = '';
+            });
+            elem.addEventListener('mouseleave', () => {
+                elem.style.transform = '';
+            });
+        });
+
+        // Simple search highlighting simulation
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(term) ? '' : 'none';
+            });
+        });
+    </script>
+</body></html>

@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Dashboard') - {{ $settings->nama_app ?? 'LaundryKu' }}</title>
     <link rel="stylesheet" href="/css/app.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     @stack('styles')
 </head>
 <body class="main">
@@ -112,7 +113,12 @@
             </div>
         </div>
     </div>
-    <script src="/js/app.js"></script>
+    @if(session('success'))
+    <script>document.addEventListener('DOMContentLoaded', () => { const t = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 3000, timerProgressBar: true }); t.fire({ icon: 'success', title: '{{ session('success') }}' }); });</script>
+    @endif
+    @if(session('error'))
+    <script>document.addEventListener('DOMContentLoaded', () => { const t = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 3000, timerProgressBar: true }); t.fire({ icon: 'error', title: '{{ session('error') }}' }); });</script>
+    @endif
     @stack('scripts')
 </body>
 </html>
