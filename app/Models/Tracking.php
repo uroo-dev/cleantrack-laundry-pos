@@ -9,6 +9,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['transaksi_id', 'status', 'keterangan', 'waktu'])]
 class Tracking extends Model
 {
+    protected function casts(): array
+    {
+        return [
+            'waktu' => 'datetime',
+        ];
+    }
+
     public function transaksi(): BelongsTo
     {
         return $this->belongsTo(Transaksi::class);

@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="id" class="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#acedff",
+                    "secondary-container": "#57dffe",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-container": "#bdffdb",
+                    "on-secondary-fixed": "#001f26",
+                    "surface-variant": "#e0e3e5",
+                    "on-surface-variant": "#434655",
+                    "error-container": "#ffdad6",
+                    "surface": "#f7f9fb",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary-container": "#006172",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-dim": "#d8dadc",
+                    "surface-bright": "#f7f9fb",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "outline-variant": "#c3c6d7",
+                    "secondary": "#00687a",
+                    "tertiary-container": "#007d55",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-tint": "#0053db",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#00174b",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "primary-container": "#2563eb",
+                    "on-primary-container": "#eeefff",
+                    "surface-container-high": "#e6e8ea",
+                    "on-tertiary-fixed": "#002113",
+                    "surface-container-low": "#f2f4f6",
+                    "on-surface": "#191c1e",
+                    "background": "#f7f9fb",
+                    "primary": "#004ac6",
+                    "primary-fixed": "#dbe1ff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "tertiary": "#006242",
+                    "surface-container": "#eceef0",
+                    "on-background": "#191c1e",
+                    "outline": "#737686",
+                    "primary-fixed-dim": "#b4c5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "xs": "4px",
+                    "sm": "12px",
+                    "margin-desktop": "48px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "lg": "40px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            }
+          }
+        }
+      }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="bg-background text-on-surface">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant/30 shadow-sm flex flex-col p-gutter z-50">
+<div class="flex items-center gap-3 mb-10">
+<span class="text-headline-sm font-headline-lg text-primary tracking-tight">LaundryHub</span>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="dashboard" data-original-icon="dashboard">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="receipt_long" data-original-icon="receipt_long">receipt_long</span>
+<span class="font-label-lg text-label-lg">Transactions</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-lg text-label-lg">Customers</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-xl font-bold active-nav-glow">
+<span class="material-symbols-outlined" data-icon="local_laundry_service" data-original-icon="local_laundry_service">local_laundry_service</span>
+<span class="font-label-lg text-label-lg">Staff Progress</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/20 flex flex-col gap-2">
+<a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-lg text-label-lg">Support</span>
+</a>
+<a href="#" class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-lg text-label-lg">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 right-0 w-full h-20 bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 z-40 flex justify-between items-center px-margin-desktop">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input type="text" placeholder="Cari Order ID atau Nama..." class="w-full pl-10 pr-4 py-2 bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary/20 text-body-md font-body-md transition-all">
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-2">
+<button class="hover:bg-surface-container-high rounded-full p-2 transition-all relative">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="hover:bg-surface-container-high rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chat">chat</span>
+</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-label-lg text-label-lg text-on-surface">Budi Santoso</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Supervisor</p>
+</div>
+<img class="w-10 h-10 rounded-full border-2 border-primary-fixed object-cover" data-alt="A professional headshot of a friendly Indonesian male supervisor in a clean, modern laundry facility management setting. Soft, natural morning light illuminates the scene, highlighting his approachable smile and the sleek, high-tech administrative environment in the background. The aesthetic is clean, professional, and trustworthy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2ocBedYCwa7inYbSCIMM5yMhFHPYN-NbiScK_wOBrvGCTT0bAbnXt_n3OYOfun8xanYkyAwgn_kLN85Fz4zz8cRW0M2NYFvTRBZtnbd0swrKmBFzxCssd9E6hTZ5udlSkw5uZQYHrwN73jg4MXf5-m8DoE9fK28NzWodvCRhP3hVClkfEHoofxbkDGotgHdn0_10RiYIdkz6zz1O2vUiZ6PrNsLZbukLOZ-bGugkDZMSP6pcF9S6ZKFFLk15IAd51a9ualUEfpw4">
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-margin-desktop">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-headline-md text-headline-md text-on-surface">Update Progress Cucian</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Kelola status pesanan aktif dengan cepat dan akurat.</p>
+</div>
+<div class="flex gap-3">
+<div class="flex bg-surface-container p-1 rounded-xl"><button class="px-4 py-2 bg-surface-container-lowest shadow-sm rounded-lg text-label-lg font-label-lg text-primary flex items-center gap-2">Semua <span class="bg-primary/10 px-2 py-0.5 rounded-full text-label-sm">12</span></button><button class="px-4 py-2 hover:bg-surface-container-high rounded-lg text-label-lg font-label-lg text-on-surface-variant transition-all flex items-center gap-2">Sesi Cuci <span class="bg-surface-container-highest px-2 py-0.5 rounded-full text-label-sm">5</span></button><button class="px-4 py-2 hover:bg-surface-container-high rounded-lg text-label-lg font-label-lg text-on-surface-variant transition-all flex items-center gap-2">Sesi Setrika <span class="bg-surface-container-highest px-2 py-0.5 rounded-full text-label-sm">3</span></button><button class="px-4 py-2 hover:bg-surface-container-high rounded-lg text-label-lg font-label-lg text-on-surface-variant transition-all flex items-center gap-2">Sesi Selesai <span class="bg-surface-container-highest px-2 py-0.5 rounded-full text-label-sm">4</span></button></div>
+</div>
+</div>
+<!-- Bento Grid of Active Orders -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Card 1: Processing -->
+<div class="glass-card rounded-xl p-md flex flex-col shadow-sm hover:shadow-md transition-all group border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-primary-container bg-primary/10 px-2 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">ORD-240501</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Siti Aminah</h3>
+</div>
+<div class="bg-secondary-container/20 text-secondary px-3 py-1 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="timer">timer</span>
+<span class="font-label-lg text-label-lg">2 Jam Lagi</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="local_laundry_service">local_laundry_service</span>
+</div>
+<div class="">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Layanan</p>
+<p class="font-body-md text-on-surface">Laundry Kiloan (5.2kg)</p>
+<p class="text-label-sm font-label-sm text-tertiary">Status: Sedang Dicuci</p>
+</div>
+</div>
+<div class="mt-auto space-y-3">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Update Cepat</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex items-center justify-center gap-2 py-3 bg-surface-container-high hover:bg-surface-container-highest rounded-lg text-on-surface transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]" data-icon="dry">dry</span>
+<span class="text-label-lg font-label-lg">Mulai Keringkan</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 bg-tertiary text-on-tertiary rounded-lg shadow-sm hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+<span class="text-label-lg font-label-lg">Selesai Cuci</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Queued -->
+<div class="glass-card rounded-xl p-md flex flex-col shadow-sm hover:shadow-md transition-all group border-l-4 border-l-outline-variant">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant bg-surface-container px-2 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">ORD-240502</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Andi Wijaya</h3>
+</div>
+<div class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+<span class="font-label-lg text-label-lg">Antre</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[32px]" data-icon="checkroom">checkroom</span>
+</div>
+<div class="">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Layanan</p>
+<p class="font-body-md text-on-surface">Jas Pria (Dry Clean)</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Status: Menunggu Antrean</p>
+</div>
+</div>
+<div class="mt-auto space-y-3">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Update Cepat</p>
+<button class="w-full flex items-center justify-center gap-2 py-4 bg-primary text-on-primary rounded-lg shadow-md hover:bg-primary/90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="play_arrow">play_arrow</span>
+<span class="text-label-lg font-label-lg">Mulai Kerjakan (In-Progress)</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Ironing -->
+<div class="glass-card rounded-xl p-md flex flex-col shadow-sm hover:shadow-md transition-all group border-l-4 border-l-secondary">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-secondary bg-secondary-fixed/30 px-2 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">ORD-240498</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Dewi Lestari</h3>
+</div>
+<div class="bg-error-container text-on-error-container px-3 py-1 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="priority_high">priority_high</span>
+<span class="font-label-lg text-label-lg">Prioritas</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-xl bg-secondary-fixed/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]" data-icon="iron">iron</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Layanan</p>
+<p class="font-body-md text-on-surface">Bedcover King Size</p>
+<p class="text-label-sm font-label-sm text-secondary">Status: Sedang Setrika</p>
+</div>
+</div>
+<div class="mt-auto space-y-3">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Update Cepat</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex items-center justify-center gap-2 py-3 bg-surface-container-high hover:bg-surface-container-highest rounded-lg text-on-surface transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-lg font-label-lg">Packing</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-3 bg-secondary text-on-secondary rounded-lg shadow-sm hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="task_alt">task_alt</span>
+<span class="text-label-lg font-label-lg">Selesai</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4:-->
+<div class="glass-card rounded-xl p-md flex flex-col shadow-sm hover:shadow-md transition-all group border-l-4 border-l-tertiary">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-tertiary bg-tertiary-fixed-dim/30 px-2 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">ORD-240495</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rudi Hermawan</h3>
+</div>
+<div class="bg-tertiary-container/20 text-on-tertiary-fixed-variant px-3 py-1 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="shopping_bag">shopping_bag</span>
+<span class="font-label-lg text-label-lg">Selesai</span>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-xl bg-tertiary-fixed/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[32px]" data-icon="done_all">done_all</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Layanan</p>
+<p class="font-body-md text-on-surface">Laundry Sepatu (2 Pasang)</p>
+<p class="text-label-sm font-label-sm text-tertiary">Status: Siap Diambil</p>
+</div>
+</div>
+<div class="mt-auto space-y-3">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Update Cepat</p>
+<button class="w-full flex items-center justify-center gap-2 py-4 bg-tertiary text-on-tertiary rounded-lg shadow-md hover:bg-tertiary/90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="person_pin_circle">person_pin_circle</span>
+<span class="text-label-lg font-label-lg">Konfirmasi Pengambilan</span>
+</button>
+</div>
+</div>
+<!-- Card 5: Washing -->
+<div class="glass-card rounded-xl p-md flex flex-col shadow-sm hover:shadow-md transition-all group border-l-4 border-l-primary">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-label-sm text-primary bg-primary-fixed/30 px-2 py-1 rounded-full uppercase tracking-wider mb-2 inline-block">ORD-240505</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Lina Marlina</h3>
+</div>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center text-primary animate-pulse">
+<span class="material-symbols-outlined text-[32px]" data-icon="waves">waves</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Layanan</p>
+<p class="font-body-md text-on-surface">Laundry Kiloan (3.0kg)</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Status: Sedang Direndam</p>
+</div>
+</div>
+<div class="mt-auto space-y-3">
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase">Update Cepat</p>
+<button class="w-full flex items-center justify-center gap-2 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-on-primary rounded-lg transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="local_laundry_service">local_laundry_service</span>
+<span class="text-label-lg font-label-lg">Mulai Cuci Mesin</span>
+</button>
+</div>
+</div>
+<!-- Add New Order Placeholder -->
+<button class="glass-card rounded-xl p-md flex flex-col items-center justify-center border-2 border-dashed border-outline-variant hover:border-primary hover:bg-primary/5 transition-all text-on-surface-variant hover:text-primary group">
+<div class="w-16 h-16 rounded-full bg-surface-container group-hover:bg-primary-fixed flex items-center justify-center mb-4 transition-all">
+<span class="material-symbols-outlined text-[40px]" data-icon="add_task">add_task</span>
+</div>
+<span class="font-headline-sm text-headline-sm">Tambah Antrean Baru</span>
+<span class="text-body-md font-body-md">Pindai QR atau input manual</span>
+</button>
+</div>
+</div>
+</main>
+<!-- FAB for quick action (Mobile/Desktop) -->
+<button class="fixed bottom-margin-desktop right-margin-desktop w-16 h-16 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-[32px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+<script>
+        // Simple micro-interaction for status buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', function() {
+                this.classList.add('scale-95');
+            });
+            btn.addEventListener('mouseup', function() {
+                this.classList.remove('scale-95');
+            });
+            btn.addEventListener('click', function() {
+                if(this.textContent.trim() === "Konfirmasi Pengambilan") {
+                    const card = this.closest('.glass-card');
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => card.remove(), 300);
+                }
+            });
+        });
+
+        // Hover animation for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                if(!card.querySelector('button[disabled]')) {
+                    card.classList.add('shadow-xl', '-translate-y-1');
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-xl', '-translate-y-1');
+            });
+        });
+    </script>
+
+</body></html>

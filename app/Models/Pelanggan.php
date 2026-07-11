@@ -11,8 +11,27 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 #[Hidden(['password'])]
 class Pelanggan extends Model
 {
+    protected function casts(): array
+    {
+        return [
+            'poin' => 'integer',
+            'total_transaksi' => 'integer',
+        ];
+    }
+
     public function transaksis(): HasMany
     {
         return $this->hasMany(Transaksi::class);
+    }
+
+    public function getTotalSpendingAttribute(): int
+    {
+        return (int) $this->transaksis()->sum('total');
+    }
+
+    public function getTransaksiTerakhirAttribute(): ?string
+    {
+        $last = $this->transaksis()->latest()->first();
+        return $last?->created_at;
     }
 }

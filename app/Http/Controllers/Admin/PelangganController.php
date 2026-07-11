@@ -12,17 +12,27 @@ class PelangganController extends Controller
     {
         $search = $request->input('search');
 
-        $pelanggans = Pelanggan::when($search, function ($query, $search) {
-            return $query->where('nama', 'like', "%{$search}%")
-                ->orWhere('kode_pelanggan', 'like', "%{$search}%")
-                ->orWhere('telepon', 'like', "%{$search}%")
-                ->orWhere('email', 'like', "%{$search}%");
-        })
+        $pelanggan = Pelanggan::withCount('transaksis')
+            ->when($search, function ($query, $search) {
+                return $query->where('nama', 'like', "%{$search}%")
+                    ->orWhere('kode_pelanggan', 'like', "%{$search}%")
+                    ->orWhere('telepon', 'like', "%{$search}%");
+            })
             ->latest()
             ->paginate(10)
             ->withQueryString();
 
-        return view('admin.pelanggan.index', compact('pelanggans', 'search'));
+        $totalPelanggan = Pelanggan::count();
+        $pelangganAktif = Pelanggan::whereHas('transaksis', function ($q) {
+            $q->whereDate('created_at', '>=', now()->subDays(30));
+        })->count();
+        $rataOrder = $totalPelanggan > 0 ? round(Pelanggan::withCount('transaksis')->get()->avg('transaksis_count'), 1) : 0;
+        $loyalitasTinggi = Pelanggan::withCount('transaksis')->having('transaksis_count', '>', 10)->count();
+
+        return view('admin.pelanggan.index', compact(
+            'pelanggan', 'search',
+            'totalPelanggan', 'pelangganAktif', 'rataOrder', 'loyalitasTinggi'
+        ));
     }
 
     public function create()
@@ -52,8 +62,11 @@ class PelangganController extends Controller
 
             Pelanggan::create($validated);
 
-            return redirect()->route('admin.pelanggan.index')
-                ->with('success', 'Pelanggan berhasil ditambahkan.');
+            $redirect = $request->input('redirect', 'admin.pelanggan.index');
+
+            return $redirect === 'transaksi'
+                ? redirect()->route('admin.transaksi.create')->with('success', 'Pelanggan berhasil ditambahkan.')
+                : redirect()->route('admin.pelanggan.index')->with('success', 'Pelanggan berhasil ditambahkan.');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', 'Gagal menambahkan pelanggan: ' . $e->getMessage());
         }
@@ -61,6 +74,7 @@ class PelangganController extends Controller
 
     public function edit(Pelanggan $pelanggan)
     {
+        $pelanggan->loadCount('transaksis');
         return view('admin.pelanggan.edit', compact('pelanggan'));
     }
 

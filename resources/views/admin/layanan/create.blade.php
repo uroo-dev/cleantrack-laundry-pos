@@ -8,41 +8,48 @@
 @endsection
 
 @section('content')
-    <div class="box p-8 intro-x mt-4">
-        <h2 class="text-lg font-medium mb-6">Tambah Layanan Baru</h2>
+    <div class="glass-card rounded-2xl p-8 soft-shadow">
+        <h2 class="text-headline-sm mb-6">Tambah Layanan Baru</h2>
         <form method="POST" action="{{ route('admin.layanan.store') }}">
             @csrf
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                    <label class="form-label">Nama Layanan <span class="text-danger">*</span></label>
-                    <input type="text" name="nama" class="form-control {{ $errors->has('nama') ? 'border-danger' : '' }}" value="{{ old('nama') }}" required>
-                    @error('nama') <small class="text-danger">{{ $message }}</small> @enderror
+                    <label class="text-label-sm block mb-1.5">Nama Layanan <span class="text-error">*</span></label>
+                    <input type="text" name="nama" value="{{ old('nama') }}" required
+                        class="bg-surface-container rounded-xl border border-outline-variant/40 px-4 py-2.5 w-full text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition {{ $errors->has('nama') ? 'border-error' : '' }}">
+                    @error('nama') <p class="text-error text-label-sm mt-1">{{ $message }}</p> @enderror
                 </div>
                 <div>
-                    <label class="form-label">Harga per Kg <span class="text-danger">*</span></label>
-                    <input type="number" name="harga_perkg" class="form-control {{ $errors->has('harga_perkg') ? 'border-danger' : '' }}" value="{{ old('harga_perkg') }}" required>
-                    @error('harga_perkg') <small class="text-danger">{{ $message }}</small> @enderror
+                    <label class="text-label-sm block mb-1.5">Harga per Kg <span class="text-error">*</span></label>
+                    <input type="number" name="harga_perkg" value="{{ old('harga_perkg') }}" required
+                        class="bg-surface-container rounded-xl border border-outline-variant/40 px-4 py-2.5 w-full text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition {{ $errors->has('harga_perkg') ? 'border-error' : '' }}">
+                    @error('harga_perkg') <p class="text-error text-label-sm mt-1">{{ $message }}</p> @enderror
                 </div>
                 <div>
-                    <label class="form-label">Estimasi (Hari) <span class="text-danger">*</span></label>
-                    <input type="number" name="estimasi_hari" class="form-control {{ $errors->has('estimasi_hari') ? 'border-danger' : '' }}" value="{{ old('estimasi_hari', 1) }}" required>
-                    @error('estimasi_hari') <small class="text-danger">{{ $message }}</small> @enderror
+                    <label class="text-label-sm block mb-1.5">Estimasi (Hari) <span class="text-error">*</span></label>
+                    <input type="number" name="estimasi_hari" value="{{ old('estimasi_hari', 1) }}" required
+                        class="bg-surface-container rounded-xl border border-outline-variant/40 px-4 py-2.5 w-full text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition {{ $errors->has('estimasi_hari') ? 'border-error' : '' }}">
+                    @error('estimasi_hari') <p class="text-error text-label-sm mt-1">{{ $message }}</p> @enderror
                 </div>
                 <div class="flex items-center">
-                    <div class="form-check">
-                        <input type="checkbox" name="is_active" class="form-check-input" id="is_active" value="1" {{ old('is_active', true) ? 'checked' : '' }}>
-                        <label for="is_active" class="form-check-label">Aktif</label>
-                    </div>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                        <input type="checkbox" name="is_active" value="1" {{ old('is_active', true) ? 'checked' : '' }}
+                            class="w-4 h-4 rounded border-outline-variant/40 text-primary focus:ring-primary/30">
+                        <span class="text-label-sm">Aktif</span>
+                    </label>
                 </div>
                 <div class="md:col-span-2">
-                    <label class="form-label">Deskripsi</label>
-                    <textarea name="deskripsi" class="form-control {{ $errors->has('deskripsi') ? 'border-danger' : '' }}" rows="3">{{ old('deskripsi') }}</textarea>
-                    @error('deskripsi') <small class="text-danger">{{ $message }}</small> @enderror
+                    <label class="text-label-sm block mb-1.5">Deskripsi</label>
+                    <textarea name="deskripsi" rows="3"
+                        class="bg-surface-container rounded-xl border border-outline-variant/40 px-4 py-2.5 w-full text-body-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition {{ $errors->has('deskripsi') ? 'border-error' : '' }}">{{ old('deskripsi') }}</textarea>
+                    @error('deskripsi') <p class="text-error text-label-sm mt-1">{{ $message }}</p> @enderror
                 </div>
             </div>
-            <div class="mt-6 flex gap-2">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <a href="{{ route('admin.layanan.index') }}" class="btn btn-secondary">Batal</a>
+            <div class="mt-8 flex gap-3">
+                <button type="submit"
+                    class="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-bold text-label-sm hover:opacity-90 transition">Simpan</button>
+                <a href="{{ route('admin.layanan.index') }}"
+                    class="bg-surface-container text-on-surface px-6 py-2.5 rounded-xl font-bold text-label-sm hover:bg-surface-container-high transition">Batal</a>
             </div>
         </form>
     </div>

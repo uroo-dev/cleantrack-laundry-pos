@@ -42,7 +42,9 @@ class TrackingController extends Controller
             ]);
         }
 
-        return view('customer.tracking', compact('transaksi'));
+        $emojis = ['●', '●', '●', '●', '●', '●'];
+
+        return view('customer.tracking', compact('transaksi', 'emojis'));
     }
 
     public function riwayat(Request $request)

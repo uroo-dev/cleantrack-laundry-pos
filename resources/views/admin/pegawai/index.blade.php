@@ -7,68 +7,105 @@
 @endsection
 
 @section('content')
-    <h2 class="intro-x text-2xl font-medium">Data Pegawai</h2>
-    <div class="intro-x mt-4">
-        <a href="{{ route('admin.pegawai.create') }}" class="btn btn-primary">
-            <i data-lucide="plus" class="w-4 h-4 mr-1"></i> Tambah Pegawai
+    <div class="flex items-center justify-between mb-6">
+        <h2 class="text-headline-sm">Data Pegawai</h2>
+        <a href="{{ route('admin.pegawai.create') }}"
+            class="bg-primary text-on-primary px-5 py-2.5 rounded-xl font-bold text-label-sm inline-flex items-center gap-2 hover:opacity-90 transition">
+            <span class="material-symbols-outlined text-lg">add</span> Tambah Pegawai
         </a>
     </div>
-    <div class="box p-5 mt-5 intro-x overflow-x-auto">
-        <table class="table">
+
+    <div class="glass-card rounded-2xl p-6 soft-shadow overflow-x-auto">
+        <table class="w-full text-body-sm">
             <thead>
-                <tr>
-                    <th class="whitespace-nowrap">No</th>
-                    <th class="whitespace-nowrap">Nama</th>
-                    <th class="whitespace-nowrap">Email</th>
-                    <th class="whitespace-nowrap">Telepon</th>
-                    <th class="whitespace-nowrap">Role</th>
-                    <th class="whitespace-nowrap">Status</th>
-                    <th class="whitespace-nowrap">Aksi</th>
+                <tr class="border-b border-outline-variant/30 text-label-sm text-outline">
+                    <th class="text-left py-3 px-2 whitespace-nowrap">No</th>
+                    <th class="text-left py-3 px-2 whitespace-nowrap">Nama</th>
+                    <th class="text-left py-3 px-2 whitespace-nowrap">Email</th>
+                    <th class="text-left py-3 px-2 whitespace-nowrap">Telepon</th>
+                    <th class="text-left py-3 px-2 whitespace-nowrap">Role</th>
+                    <th class="text-left py-3 px-2 whitespace-nowrap">Status</th>
+                    <th class="text-left py-3 px-2 whitespace-nowrap">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse($pegawais as $p)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $p->name }}</td>
-                    <td>{{ $p->email }}</td>
-                    <td>{{ $p->phone ?? '-' }}</td>
-                    <td>
+                <tr class="border-b border-outline-variant/10 hover:bg-surface-container/50 transition">
+                    <td class="py-3 px-2">{{ $loop->iteration }}</td>
+                    <td class="py-3 px-2 font-medium">{{ $p->name }}</td>
+                    <td class="py-3 px-2">{{ $p->email }}</td>
+                    <td class="py-3 px-2">{{ $p->phone ?? '-' }}</td>
+                    <td class="py-3 px-2">
                         @if($p->role === 'admin')
-                            <span class="px-2 py-1 rounded text-xs font-medium bg-primary/20 text-primary">Admin</span>
+                            <span class="inline-block px-3 py-1 rounded-lg text-label-sm font-medium bg-primary/20 text-primary">Admin</span>
                         @else
-                            <span class="px-2 py-1 rounded text-xs font-medium bg-info/20 text-info">Staff</span>
+                            <span class="inline-block px-3 py-1 rounded-lg text-label-sm font-medium bg-info/20 text-info">Staff</span>
                         @endif
                     </td>
-                    <td>
+                    <td class="py-3 px-2">
                         @if($p->is_active)
-                            <span class="px-2 py-1 rounded text-xs font-medium bg-success/20 text-success">Aktif</span>
+                            <span class="inline-block px-3 py-1 rounded-lg text-label-sm font-medium bg-success/20 text-success">Aktif</span>
                         @else
-                            <span class="px-2 py-1 rounded text-xs font-medium bg-danger/20 text-danger">Nonaktif</span>
+                            <span class="inline-block px-3 py-1 rounded-lg text-label-sm font-medium bg-error/20 text-error">Nonaktif</span>
                         @endif
                     </td>
-                    <td class="flex gap-1">
-                        <a href="{{ route('admin.pegawai.edit', $p) }}" class="btn btn-sm btn-warning">
-                            <i data-lucide="edit" class="w-3 h-3"></i>
-                        </a>
-                        <form method="POST" action="{{ route('admin.pegawai.destroy', $p) }}" onsubmit="return confirm('Yakin ingin menghapus?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                <i data-lucide="trash-2" class="w-3 h-3"></i>
+                    <td class="py-3 px-2">
+                        <div class="flex gap-2">
+                            <a href="{{ route('admin.pegawai.edit', $p) }}"
+                                class="bg-warning/20 text-warning px-3 py-2 rounded-xl inline-flex items-center gap-1 text-label-sm font-bold hover:bg-warning/30 transition">
+                                <span class="material-symbols-outlined text-lg">edit</span>
+                            </a>
+                            <button type="button"
+                                class="bg-error/20 text-error px-3 py-2 rounded-xl inline-flex items-center gap-1 text-label-sm font-bold hover:bg-error/30 transition btn-delete"
+                                data-url="{{ route('admin.pegawai.destroy', $p) }}">
+                                <span class="material-symbols-outlined text-lg">delete</span>
                             </button>
-                        </form>
+                        </div>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="7" class="text-center text-slate-400 py-4">Tidak ada data pegawai</td>
+                    <td colspan="7" class="text-center text-outline py-6">Tidak ada data pegawai</td>
                 </tr>
                 @endforelse
             </tbody>
         </table>
     </div>
-    <div class="mt-5 intro-x">
+
+    @if(method_exists($pegawais, 'links'))
+    <div class="mt-6">
         {{ $pegawais->links() }}
     </div>
+    @endif
+
+    <form id="deleteForm" method="POST" style="display:none;">
+        @csrf
+        @method('DELETE')
+    </form>
 @endsection
+
+@push('scripts')
+<script>
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const url = this.dataset.url;
+            Swal.fire({
+                title: 'Yakin ingin menghapus?',
+                text: 'Data yang dihapus tidak dapat dikembalikan!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#EF4444',
+                cancelButtonColor: '#6B7280',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const form = document.getElementById('deleteForm');
+                    form.action = url;
+                    form.submit();
+                }
+            });
+        });
+    });
+</script>
+@endpush

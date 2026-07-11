@@ -25,7 +25,7 @@ class PublicController extends Controller
 
         if ($kode) {
             $transaksi = Transaksi::where('kode_transaksi', $kode)
-                ->with(['layanan', 'trackings' => function ($query) {
+                ->with(['pelanggan', 'layanan', 'pembayaran', 'trackings' => function ($query) {
                     $query->orderBy('waktu', 'asc');
                 }, 'detailLaundries'])
                 ->first();

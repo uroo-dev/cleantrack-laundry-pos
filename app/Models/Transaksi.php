@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-#[Fillable(['kode_transaksi', 'pelanggan_id', 'user_id', 'layanan_id', 'berat', 'harga', 'diskon', 'total', 'status', 'catatan', 'estimasi_selesai', 'tanggal_ambil'])]
+#[Fillable([
+    'kode_transaksi', 'pelanggan_id', 'user_id', 'layanan_id',
+    'berat', 'harga', 'diskon', 'dp', 'pajak', 'total',
+    'status', 'status_pembayaran', 'catatan', 'outlet', 'qr_code',
+    'estimasi_selesai', 'tanggal_ambil'
+])]
 class Transaksi extends Model
 {
     protected function casts(): array
@@ -18,6 +23,12 @@ class Transaksi extends Model
             'tanggal_ambil' => 'datetime',
             'created_at' => 'datetime',
             'updated_at' => 'datetime',
+            'berat' => 'decimal:2',
+            'harga' => 'decimal:2',
+            'diskon' => 'decimal:2',
+            'dp' => 'decimal:2',
+            'pajak' => 'decimal:2',
+            'total' => 'decimal:2',
         ];
     }
 
@@ -38,7 +49,7 @@ class Transaksi extends Model
 
     public function detailLaundries(): HasMany
     {
-        return $this->hasMany(DetailLaundry::class);
+        return $this->hasMany(DetailLaundry::class, 'transaksi_id');
     }
 
     public function trackings(): HasMany
@@ -54,5 +65,10 @@ class Transaksi extends Model
     public function rating(): HasOne
     {
         return $this->hasOne(Rating::class);
+    }
+
+    public function getInvoiceAttribute(): string
+    {
+        return $this->kode_transaksi ?? 'INV-' . str_pad((string) $this->id, 5, '0', STR_PAD_LEFT);
     }
 }

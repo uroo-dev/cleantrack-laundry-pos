@@ -31,16 +31,28 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
     Route::resource('pelanggan', PelangganController::class)->except('show');
     Route::resource('layanan', LayananController::class);
-    Route::resource('transaksi', TransaksiController::class)->only(['index', 'show']);
+
+    Route::get('/transaksi/export', [TransaksiController::class, 'export'])->name('transaksi.export');
+    Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi.index');
+    Route::get('/transaksi/create', [TransaksiController::class, 'create'])->name('transaksi.create');
+    Route::post('/transaksi', [TransaksiController::class, 'store'])->name('transaksi.store');
+    Route::get('/transaksi/{transaksi}', [TransaksiController::class, 'show'])->name('transaksi.show');
+    Route::patch('/transaksi/{transaksi}/status', [TransaksiController::class, 'updateStatus'])->name('transaksi.update-status');
+    Route::patch('/transaksi/{transaksi}/payment', [TransaksiController::class, 'updatePayment'])->name('transaksi.update-payment');
+
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan.index');
     Route::get('/laporan/pendapatan', [LaporanController::class, 'pendapatan'])->name('laporan.pendapatan');
     Route::get('/laporan/pelanggan', [LaporanController::class, 'pelanggan'])->name('laporan.pelanggan');
     Route::get('/laporan/layanan', [LaporanController::class, 'layanan'])->name('laporan.layanan');
     Route::resource('pegawai', PegawaiController::class);
+
     Route::get('/pengaturan', [PengaturanController::class, 'index'])->name('pengaturan.index');
     Route::post('/pengaturan', [PengaturanController::class, 'update'])->name('pengaturan.update');
+    Route::post('/pengaturan/reset', [PengaturanController::class, 'reset'])->name('pengaturan.reset');
+    Route::get('/pengaturan/export-data', [PengaturanController::class, 'export'])->name('pengaturan.export');
 });
 
 Route::prefix('staff')->name('staff.')->middleware(['auth', 'role:staff'])->group(function () {
